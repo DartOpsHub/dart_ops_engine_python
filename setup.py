@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='dart_ops_engine',
-    version='0.1.0',
+    version='0.1.1',
     packages=find_packages(),
     install_requires=[
         # List your dependencies here
@@ -12,5 +12,5 @@ setup(
     description='一个可以被Dart dart_ops_engine执行的Python脚本引擎',
     long_description=open('README.md').read(),
     long_description_content_type='text/markdown',
-    url='https://github.com/josercc/dart_ops_engine/python',
+    url='https://github.com/DartOpsHub/dart_ops_engine_python',
 )
