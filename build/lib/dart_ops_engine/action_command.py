@@ -1,7 +1,8 @@
 import json
-from env import Env
-from execute import Execute
-from action_run import ActionRun
+from .env import Env
+from .execute import Execute
+from .action_run import ActionRun
+import os
 
 
 class ActionCommand:
@@ -21,7 +22,7 @@ class ActionCommand:
         if execute:
             execute.save_request_data(data, index)
 
-        response = self.action_run.run(execute.memory_env if execute else Env(), self.request_args)
+        response = self.action_run.run(execute.memory_env if execute else Env(os.environ), self.request_args)
         if execute:
             execute.save_response_data(response, index)
         else:

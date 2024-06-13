@@ -2,17 +2,17 @@ import json
 import os
 import time
 
-from cache_manager import CacheManager
-from env import Env
+from .cache_manager import CacheManager
+from .env import Env
 
-import define
+from .define import engine_dir, request_argument
 
 class Execute:
     def __init__(self, id=None, use_cache=False, configs=None):
         self.id = id or int(time.time() * 1000)
         self.use_cache = use_cache
         self.configs = configs or []
-        self.cache_manager = CacheManager(cache_dir=os.path.join(define.engine_dir, 'execute'))
+        self.cache_manager = CacheManager(cache_dir=os.path.join(engine_dir, 'execute'))
         self.memory_env = Env(environment=os.environ)
         self.configs = configs
     
@@ -53,7 +53,7 @@ class Execute:
             execute = Execute.cache(id)
             execute.init()
 
-        for arg in define.request_argument:
+        for arg in request_argument:
             if arg.startswith('--args='):
                 # --args=name=value
                 values = arg[7:].split('=')

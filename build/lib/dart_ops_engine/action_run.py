@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 from typing import Dict, Any
 
-from env import Env
+from .env import Env
 
 class ActionRun(ABC):
     @abstractmethod
@@ -18,8 +18,8 @@ class EnvGet:
     
 class DictGet:
     @staticmethod
-    def read(env, name):
-        value = env.env.get(name)
+    def read(dict: Dict, name):
+        value = dict[name]
         if value is None:
-            raise Exception(f'环境变量:{name} 不存在!')
+            raise Exception(f'参数:{name} 不存在!')
         return value

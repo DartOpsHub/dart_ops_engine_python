@@ -1,10 +1,10 @@
 import argparse
 from typing import List
 
-from action_command import ActionCommand
-from execute import Execute
-import define
+from .action_command import ActionCommand
+from .execute import Execute
 import sys
+from .define import request_argument
 
 class DartOpsEngine:
     def __init__(self, description: str = None):
@@ -26,7 +26,7 @@ class DartOpsEngine:
         for arg in sys.argv:
             prefixs = ['--args=', '--env=', '--res=']
             if any(arg.startswith(prefix) for prefix in prefixs):
-                define.request_argument.append(arg)
+                request_argument.append(arg)
             else:
                 cache_args.append(arg)
         
